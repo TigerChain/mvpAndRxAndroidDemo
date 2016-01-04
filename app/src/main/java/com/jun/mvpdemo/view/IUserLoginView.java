@@ -12,4 +12,7 @@ public interface IUserLoginView {
 
     void showProgress() ;
     void hidePorgress() ;
+
+    void showSuccess(String msg);
+    void showFail(String msg);
 }
