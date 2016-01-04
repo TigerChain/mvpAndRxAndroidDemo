@@ -37,7 +37,9 @@ public class UserLoginPresenterImpl implements IUserLoginPresenter {
     public void login(final Context context) {
         this.context = context ;
         iUserLoginView.showProgress();
-        iUser.login(iUserLoginView.getUserName().trim(),iUserLoginView.getUserPass().trim(),onLoginListener)
+        String userName = iUserLoginView.getUserName().trim();
+        String userPass = iUserLoginView.getUserPass().trim();
+        iUser.login(userName, userPass,onLoginListener)
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(new Subscriber<User>() {
             @Override
