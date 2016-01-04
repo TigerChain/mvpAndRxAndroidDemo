@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.jun.mvpdemo.domain.User;
+import com.jun.mvpdemo.domain.UserImpl;
 import com.jun.mvpdemo.inter.OnLoginListener;
 import com.jun.mvpdemo.presenter.IUserLoginPresenter;
 import com.jun.mvpdemo.presenter.UserLoginPresenterImpl;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements IUserLoginView,On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        iUserLoginPresenter = new UserLoginPresenterImpl(this,this) ;
+        iUserLoginPresenter = new UserLoginPresenterImpl(this,this, new UserImpl()) ;
 
         initView() ;
     }

@@ -23,12 +23,12 @@ public class UserLoginPresenterImpl implements IUserLoginPresenter {
     private Context context ;
 
     private OnLoginListener onLoginListener ;
-   public  UserLoginPresenterImpl(IUserLoginView iUserLoginView,OnLoginListener onLoginListener){
+   public  UserLoginPresenterImpl(IUserLoginView iUserLoginView, OnLoginListener onLoginListener, IUser iUser){
 
        this.iUserLoginView = iUserLoginView ;
        this.onLoginListener = onLoginListener ;
 
-       iUser = new UserImpl() ;
+       this.iUser = iUser;
 
     }
 
