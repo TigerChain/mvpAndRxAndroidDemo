@@ -1,8 +1,6 @@
 package com.jun.mvpdemo.domain;
 
 
-import com.jun.mvpdemo.inter.OnLoginListener;
-
 import rx.Observable;
 
 /**
@@ -15,8 +13,7 @@ public interface IUser {
      * 登录方法
      * @param userName
      * @param userPass
-     * @param listener
      * @return
      */
-    Observable<User> login(String userName,String userPass,OnLoginListener listener) ;
+    Observable<User> login(String userName,String userPass) ;
 }

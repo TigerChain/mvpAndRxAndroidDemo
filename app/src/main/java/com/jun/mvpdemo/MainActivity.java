@@ -10,13 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.jun.mvpdemo.domain.User;
-import com.jun.mvpdemo.inter.OnLoginListener;
+import com.jun.mvpdemo.domain.UserImpl;
 import com.jun.mvpdemo.presenter.IUserLoginPresenter;
 import com.jun.mvpdemo.presenter.UserLoginPresenterImpl;
 import com.jun.mvpdemo.view.IUserLoginView;
 
-public class MainActivity extends AppCompatActivity implements IUserLoginView,OnLoginListener{
+public class MainActivity extends AppCompatActivity implements IUserLoginView {
 
 
     private EditText userName ,userPass ;
@@ -33,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements IUserLoginView,On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        iUserLoginPresenter = new UserLoginPresenterImpl(this,this) ;
+        iUserLoginPresenter = new UserLoginPresenterImpl(this, new UserImpl()) ;
 
         initView() ;
     }
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements IUserLoginView,On
                   return ;
                 }
 
-                iUserLoginPresenter.login(MainActivity.this);
+                iUserLoginPresenter.login();
 
             }
         });
@@ -79,12 +78,12 @@ public class MainActivity extends AppCompatActivity implements IUserLoginView,On
 
     @Override
     public String getUserName() {
-        return userName.getText().toString().trim();
+        return userName.getText().toString();
     }
 
     @Override
     public String getUserPass() {
-        return userPass.getText().toString().trim();
+        return userPass.getText().toString();
     }
 
     @Override
@@ -126,18 +125,12 @@ public class MainActivity extends AppCompatActivity implements IUserLoginView,On
     }
 
     @Override
-    public void loginSuccess(User user) {
-
-        Toast.makeText(this,user.getUserName()+"登录成功",Toast.LENGTH_SHORT).show();
-
+    public void showSuccess(String msg) {
+        Toast.makeText(this, msg,Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void loginFailed() {
-
-
-
-        Toast.makeText(this,"登录失败",Toast.LENGTH_SHORT).show();
-
+    public void showFail(String msg) {
+        Toast.makeText(this, msg,Toast.LENGTH_SHORT).show();
     }
 }
