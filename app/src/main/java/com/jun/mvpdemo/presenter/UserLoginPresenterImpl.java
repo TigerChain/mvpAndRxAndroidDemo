@@ -1,6 +1,5 @@
 package com.jun.mvpdemo.presenter;
 
-import android.content.Context;
 import android.util.Log;
 
 import com.jun.mvpdemo.domain.IUser;
@@ -19,7 +18,6 @@ public class UserLoginPresenterImpl implements IUserLoginPresenter {
     private IUser iUser ;
     private IUserLoginView iUserLoginView ;
 
-    private Context context ;
 
    public  UserLoginPresenterImpl(IUserLoginView iUserLoginView, IUser iUser){
 
@@ -31,8 +29,7 @@ public class UserLoginPresenterImpl implements IUserLoginPresenter {
 
 
     @Override
-    public void login(final Context context) {
-        this.context = context ;
+    public void login() {
         iUserLoginView.showProgress();
         String userName = iUserLoginView.getUserName().trim();
         String userPass = iUserLoginView.getUserPass().trim();

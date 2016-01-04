@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements IUserLoginView {
                   return ;
                 }
 
-                iUserLoginPresenter.login(MainActivity.this);
+                iUserLoginPresenter.login();
 
             }
         });
