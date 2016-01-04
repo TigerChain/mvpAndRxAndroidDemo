@@ -79,12 +79,12 @@ public class MainActivity extends AppCompatActivity implements IUserLoginView,On
 
     @Override
     public String getUserName() {
-        return userName.getText().toString().trim();
+        return userName.getText().toString();
     }
 
     @Override
     public String getUserPass() {
-        return userPass.getText().toString().trim();
+        return userPass.getText().toString();
     }
 
     @Override
