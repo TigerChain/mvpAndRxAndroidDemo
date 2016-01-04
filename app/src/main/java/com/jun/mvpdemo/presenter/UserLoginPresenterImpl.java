@@ -11,6 +11,7 @@ import com.jun.mvpdemo.view.IUserLoginView;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by chenjunjun on 1/4/16.
@@ -39,9 +40,10 @@ public class UserLoginPresenterImpl implements IUserLoginPresenter {
         iUserLoginView.showProgress();
         String userName = iUserLoginView.getUserName().trim();
         String userPass = iUserLoginView.getUserPass().trim();
-        iUser.login(userName, userPass,onLoginListener)
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Subscriber<User>() {
+        iUser.login(userName, userPass,onLoginListener) // 只有逻辑，没有分配到具体线程
+        .subscribeOn(Schedulers.io()) // 指明在异步线程中调用(订阅)
+        .observeOn(AndroidSchedulers.mainThread()) // 通知到主线程中
+        .subscribe(new Subscriber<User>() { // 因为上一步通知到了主线程，所以下面调用(订阅)也就是在主线程了。
             @Override
             public void onCompleted() {
 

@@ -40,6 +40,6 @@ public class UserImpl implements IUser {
 
 
 
-        }).subscribeOn(Schedulers.newThread());
+        });// 只有逻辑，不应该分配到具体线程
     }
 }
